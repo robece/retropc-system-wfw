@@ -1,0 +1,1292 @@
+
+MS-DOS es una marca registrada y Windows es una marca de Microsoft 
+Corporation. 
+AT&T es una marca registrada de American Telephone and Telegraph Company.
+RAMpage! es una marca registrada de AST Research, Inc.
+SideKick es una marca registrada de Borland International, Inc.
+PC Tools y PC Tools Deluxe son marcas de Central Point Software, Inc.
+COMPAQ es una marca registrada de Compaq Computer Corporation.
+HP es una marca registrada de Hewlett-Packard Company.
+IBM y PS/2 son marcas registradas de International Business Machines 
+Corporation.
+Intel es una marca registrada, y Inboard y LANSight son marcas de Intel 
+Corporation.
+Logitech es una marca registrada de Logitech, Inc.
+NEC es una marca registrada de NEC Corporation.
+Exos, NetWare, y Novell son marcas registradas de Novell, Inc.
+Norton Utilities es una marca registrada de Peter Norton Computing,
+Incorporated.
+386MAX es una marca registrada de Qualitas, Inc.
+Radius es una marca registrada de Radius, Inc.
+Stacker es una marca registrada de STAC Electronics.
+Norton Anti-Virus es una marca registrada de Symantec Corporation.
+Zenith es una marca registrada de Zenith Electronics Corporation.
+
+INSTALAR.TXT
+============
+Este archivo contiene informaci¢n acerca de los problemas que pueden 
+surgir durante la ejecuci¢n del programa Instalar Windows para 
+Trabajo en Grupo, especialmente los relacionados con los programas 
+residentes en memoria (TSR) o con los controladores. Si utiliza un TSR 
+o si se presenta alg£n problema durante la instalaci¢n de Windows para 
+Trabajo en Grupo, lea este documento antes de ejecutar nuevamente 
+Windows para Trabajo en Grupo.
+
+Observaciones generales sobre la instalaci¢n 
+============================================
+En esta secci¢n se incluyen observaciones sobre determinadas 
+configuraciones del sistema que pueden impedir la correcta instalaci¢n 
+de Windows para Trabajo en Grupo. Se brinda adem s una soluci¢n a cada 
+problema. Si est  utilizando alguno de los productos de hardware o 
+software mencionados, siga las recomendaciones indicadas ANTES de 
+ejecutar Instalar.
+
+Tarjetas de Red
+---------------
+Si utiliza alguna de las siguientes tarjetas, deber  ejecutar Instalar 
+con la opci¢n /i:
+
+	Novell(R)/Anthem NE1500 
+	Novell/Anthem NE2100 
+	Advanced Micro Devices (AMD) AM2100
+	Microdyne Exos(R) 105
+
+A continuaci¢n del s¡mbolo del sistema, escriba lo siguiente:
+
+	instalar /i
+
+
+Protectores de pantalla para MS-DOS(R)
+--------------------------------------
+Desactive cualquier protector de pantalla para MS-DOS antes de ejecutar 
+Instalar, ya que podr¡an ocasionar problemas.
+
+
+Computadoras Compaq(R) con MS-DOS 5.0 o superior y pantallas EGA o VGA 
+----------------------------------------------------------------------
+Si utiliza una versi¢n actualizada de MS-DOS como 5.0 o superior, antes 
+de instalar Windows para Trabajo en Grupo, examine el archivo CONFIG.SYS 
+y aseg£rese de que los controladores siguientes (en caso de estar 
+presentes) aparezcan en este orden:
+
+	HIMEM.SYS
+	EMM386.EXE
+	ANSI.SYS
+
+Nota:   Si utiliza la versi¢n MS-DOS 5.0 de Compaq, se utiliza HIMEM.EXE 
+	en lugar de HIMEM.SYS y CEMM.EXE en lugar de EMM386.EXE.
+
+Si el archivo ANSI.SYS se carga antes que HIMEM.SYS o EMM386.EXE (o si
+utiliza MS-DOS 5.0 de COMPAQ antes de HIMEM.EXE o CEMM.EXE), entonces 
+Instalar puede reiniciar el sistema antes de instalar Windows para 
+Trabajo en Grupo. Adem s, si se utiliza la l¡nea de comandos 
+DOS=HIGH,UMB para cargar MS-DOS en memoria alta y EMM386.EXE se carga 
+antes que ANSI.SYS, se crear  la cantidad m xima de memoria alta 
+disponible en una computadora Compaq.
+
+
+Computadora AT&T(R) Safari
+--------------------------
+Si posee una computadora AT&T Safari, no podr  instalar Windows para 
+Trabajo en Grupo en un directorio nuevo y mantener al mismo tiempo dos 
+versiones de Windows. Deber  actualizar la versi¢n actual, si es que 
+tiene alguna. Si instala Windows para Trabajo en Grupo 3.11 en su propio 
+directorio, el programa no utilizar  los controladores especiales 
+necesarios para ejecutarse en la computadora Safari.
+
+
+Pantallas que podr n requerir controladores actualizados con Windows 
+para Trabajo en Grupo
+--------------------------------------------------------------------
+
+Ciertos controladores de pantalla suministrados por otros fabricantes 
+para Windows 3.0 pueden causar problemas con Windows para Trabajo en 
+Grupo 3.11. El problema m s serio que puede producirse al usar ciertos 
+controladores de pantalla no compatibles con Windows para Trabajo en 
+Grupo 3.11, es que se presente un fallo en el sistema mientras ejecuta 
+el programa de instalaci¢n de Windows para Trabajo en Grupo. En este 
+caso, ejecute Instalar y luego seleccione un tipo de pantalla est ndar, 
+como por ejemplo VGA, incluido con Windows para Trabajo en Grupo.
+
+Con otros controladores de pantalla de Windows 3.0 puede que Windows 
+para Trabajo en Grupo se instale sin problemas, aunque puede suceder 
+que las fuentes TrueType no aparezcan correctamente en pantalla. 
+
+En la Biblioteca de controladores de Windows (WDL) encontrar  la versi¢n 
+actualizada del controlador, aunque tambi‚n puede solicitarla al 
+distribuidor o al fabricante. Para obtener m s informaci¢n sobre la 
+Biblioteca de controladores de Windows, consulte Obtenci¢n de los 
+controladores de la Biblioteca de controladores de Windows (WDL), m s
+adelante en este cap¡tulo.
+
+Los siguientes adaptadores de pantalla para Windows 3.0 pueden causar 
+problemas:
+
+* ATI Graphics Ultra, Vantage y Mach32: 
+
+      Nota:   Estos adaptadores son compatibles con 8514/a y se 
+	      ejecutan sin problemas con el controlador incluido con 
+	      Windows para Trabajo en Grupo.
+
+* Adaptadores de pantalla DGIS (Direct Graphics Interface Standard) de 
+  Graphic Software Systems, incluidos los siguientes:
+		
+	NEC(R) MultiSynch Graphics Engine (MGE)
+	Zenith(R) Z-649             
+	HP(R) IGC-10, IGC-20
+	Serie GSS 1000
+
+      Nota:   Algunos adaptadores basados en DGIS son compatibles con 
+	      TIGA y se ejecutan de forma correcta con el controlador 
+	      TIGACD.EXE, de MS-DOS, y con el controlador TIGA incluido 
+	      con Windows para Trabajo en Grupo.
+
+* HP Ultra VGA (s¢lo versiones anteriores a 1.4)
+* IBM(R) Image Adapter/A  
+* Matrox SeriesMG/Series M-WIN
+* Palettized VGA 640x480, de 16 colores (incluido con la
+  versi¢n 1.0 de Extensiones Multimedia para Windows 1.0)
+* Radius SVGA MultiView
+
+* Adaptadores de pantalla RGDI (Renaissance Graphics Device Interface)
+  de Appian, Inc., incluidos los siguientes:
+		
+	Appian Rendition II, IIe, II/XE, y III
+	Appian GV1024
+	Decpc 433
+
+* Adaptadores S3, incluidos los siguientes:
+	      
+	Orchid Fahrenheit 1280
+	STB WIND/X
+	Diamond Stealth VRAM
+
+
+Uso del adaptador de v¡deo ATI Mach 32
+--------------------------------------
+Si est  utilizando un adaptador de v¡deo ATI Mach 32, deber  utilizar
+el controlador 8514/a incluido con Windows para Trabajo en Grupo.
+
+Antes de ejecutar la instalaci¢n de Windows, aseg£rese de que el 
+adaptador Mach 32 est‚ instalado correctamente. En el programa Instalar 
+de Mach 32, elija la opci¢n Definir configuraci¢n. Configure el tama¤o 
+de la memoria VGA a la mitad de la RAM disponible en el adaptador Mach 
+32. Dado que la mayor¡a de los adaptadores Mach 32 disponen 1 MB de RAM, 
+por lo general el ajuste adecuado es 512K.
+
+Uso del programa Stacker(R)
+---------------------------
+Si se emplea el programa Stacker para comprimir el disco duro, deben 
+adoptarse ciertas medidas antes de instalar Windows para Trabajo en 
+Grupo.
+
+*   Si utiliza un archivo de intercambio con Windows para Trabajo en 
+    Grupo, deber  instalarlo en el disco no comprimido. Cuando instale 
+    el Stacker, puede dejar sin comprimir un m¡nimo de 1 MB de espacio 
+    en disco para almacenar los archivos del sistema. A fin de que quede 
+    espacio suficiente para el archivo de intercambio, la cantidad de 
+    espacio en disco que se deje sin comprimir deber  ser por lo menos 
+    el doble de la cantidad de memoria disponible en el sistema. Si el 
+    sistema tiene 4 MB de memoria, deber  dejar sin comprimir al menos 8 
+    MB de espacio en disco.
+
+    Si Stacker ya est  instalado en el sistema y no hay suficiente 
+    espacio sin comprimir en el disco para un archivo de intercambio, 
+    puede ejecutar - para aumentar el espacio - la utilidad STAC 
+    incluida con Stacker. Para obtener m s informaci¢n, consulte la 
+    documentaci¢n de Stacker.
+
+*   Si est  utilizando Stacker versi¢n 2.0 o posterior, el programa de
+    instalaci¢n de Windows para Trabajo en Grupo modificar  los archivos
+    CONFIG.SYS y AUTOEXEC.BAT. Cuando Instalar termine de efectuar las 
+    modificaciones recibir  un mensaje al finalizar la instalaci¢n de la 
+    parte de Windows, indicando qu‚ modificaciones se han efectuado. Si 
+    ha utilizado Stacker para cambiar la unidad de inicio, cuando vuelva 
+    a iniciar el sistema Stacker le preguntar  si desea actualizar a las 
+    nuevas versiones de CONFIG.SYS y AUTOEXEC.BAT. Se recomienda hacerlo.
+
+    Si est  utilizando una versi¢n de Stacker anterior a la 2.0 de 
+    Stacker, ser  necesario modificar manualmente CONFIG.SYS y 
+    AUTOEXEC.BAT. Para obtener informaci¢n adicional, vea el tema: 
+    "Modificaci¢n manual de los archivos CONFIG.SYS y AUTOEXEC.BAT" en 
+    este mismo archivo.
+
+*   Para obtener un rendimiento ¢ptimo, no utilice el programa 
+    SMARTDrive para aplicar el cach‚ a la unidad comprimida. H galo 
+    £nicamente con la unidad no comprimida. Pueden incluirse opciones en 
+    la l¡nea SMARTDRV.EXE del archivo CONFIG.SYS para especificar a qu‚ 
+    unidades deber  aplicar el cach‚. 
+
+    Por ejemplo, si la utilidad de intercambio del programa Stacker 
+    intercambia las unidades C y D de tal modo que C quede como unidad 
+    comprimida y D como no comprimida, en el archivo AUTOEXEC.BAT
+    deber  incluir la siguiente l¡nea:
+			
+	c:\windows\smartdrv.exe c- d+
+
+
+Para obtener m s informaci¢n sobre los archivos de intercambio y la
+utilizaci¢n del programa SMARTDrive, consulte el cap¡tulo 11, 
+"Administraci¢n de la memoria y rendimiento", en el Manual del usuario 
+de Windows para Trabajo en Grupo.
+
+
+Soluci¢n de conflictos de memoria utilizando MONOUMB.386 o MONOUMB2.386
+-----------------------------------------------------------------------
+Si al iniciar Windows para Trabajo en Grupo se encuentra con el 
+siguiente mensaje, es posible que el controlador de pantalla est‚ 
+accediendo al rango de direcci¢n monocromo (B000-B7FF), que impide al 
+administrador de memoria utilizar este rango para los bloques de la 
+memoria alta:
+
+	"Windows no puede instalar un bloque de memoria alta 
+	 en el segmento B000. Excluya este espacio de direcci¢n 
+	 utilizando la sintaxis del administrador de memoria. 
+	 Para obtener m s informaci¢n, utilice un editor de 
+	 MS-DOS para leer el archivo INSTALAR.TXT."
+
+Para resolver este problema, intente instalar MONOUMB2.386 en el 
+sistema. MONOUMB.386 es un controlador de dispositivo que permite a 
+ciertos administradores de memoria utilizar el rango de direcci¢n 
+monocromo para los bloques de la memoria alta, incluso si el controlador 
+de pantalla tiene acceso a este rango.
+
+MONOUMB2.386 est  incluido en la versi¢n 3.1 de Windows para Trabajo en
+Grupo, o puede solicitarlo a Microsoft. No se incluye en los disquetes
+de Windows para Trabajo en Grupo 3.11. Para instalar MONOUMB2.386:
+
+1. Copie y expanda el archivo MONOUMB2.38_ en el directorio SYSTEM de
+   Windows, escribiendo lo siguiente a continuaci¢n del s¡mbolo del
+   sistema:
+
+   expand a:\monoumb2.38_ c:\windows\system\monoumb2.386
+
+2. Agregue la siguiente configuraci¢n a la secci¢n [386Enh] del archivo 
+   SYSTEM.INI:
+
+   device=monoumb2.386
+
+3. Inicie Windows para Trabajo en Grupo.
+
+   Nota: Es posible que MONOUMB2.386 no funcione con algunos 
+   administradores de memoria, como EMM386.EXE. En tal caso, puede 
+   intentar utilizar MONOUMB.386, incluido en la Biblioteca de 
+   controladores de Windows (WDL). Para obtener informaci¢n acerca de la 
+   obtenci¢n de controladores de WDL, consulte la secci¢n "Obtenci¢n de 
+   controladores de la Biblioteca de Controladores de Windows", en este 
+   mismo cap¡tulo.
+
+Tambi‚n es posible excluir la regi¢n de direcci¢n B000-B7FF, con lo que 
+se especificar  que el administrador de memoria no deber  intentar
+utilizar este rango de memoria para los bloques de la memoria superior.
+Para obtener informaci¢n acerca de la exclusi¢n de rangos de memoria
+espec¡ficos, consulte el siguiente tema.
+
+
+Soluci¢n de conflictos de memoria excluyendo un rango de direcci¢n
+------------------------------------------------------------------
+Si al iniciar Windows para Trabajo en Grupo aparece el siguiente 
+mensaje, siendo que la direcci¢n especificada en el mismo no es B000, 
+deber  excluir el rango de direcci¢n:
+
+	"Windows no puede instalar un bloque de memoria alta 
+	 en el segmento xxxx. Excluya este espacio de direcci¢n 
+	 utilizando la sintaxis del administrador de memoria. 
+	 Para obtener m s informaci¢n, utilice un editor de 
+	 MS-DOS para leer el archivo INSTALAR.TXT."
+
+Si la direcci¢n especificada en el mensaje es B000, puede intentar
+instalar MONOMB2.386 o MONOUMB.386, seg£n se describe en el tema
+precedente.
+
+El m‚todo utilizado para excluir un rango de direcci¢n depende del
+administrador de memoria que est‚ utilizando. Por ejemplo, si est  
+utilizando EMM386.EXE, es necesario eliminar la opci¢n I=xxxx de la
+l¡nea de comando device=emm386.exe del archivo CONFIG.SYS, donde xxxx es 
+el rango de direcci¢n que comienza en la direcci¢n especificada en el 
+mensaje de error.
+
+Si est  utilizando QEMMI, es necesario incluir la opci¢n X= en la l¡nea 
+de comando device=qemm.386.sys del archivo CONFIG.SYS. Por ejemplo, para 
+excluir el rango de direcci¢n C000-C7FF, debe especificar lo siguiente:
+
+	device=qemm386.sys X=C000-C7FF
+
+Para obtener m s informaci¢n acerca de la manera de configurar el 
+archivo CONFIG.SYS, consulte la documentaci¢n de MS-DOS. Para obtener 
+m s informaci¢n acerca de la instalaci¢n y configuraci¢n de EMM386.EXE,
+consulte "Administraci¢n de la memoria y rendimiento" en el Manual del 
+usuario de Windows o de Windows para Trabajo en Grupo. Para obtener m s 
+informaci¢n acerca de la instalaci¢n y configuraci¢n de otros 
+administradores de memoria, consulte la documentaci¢n adjunta al
+dispositivo.
+
+
+Modificaci¢n manual de los archivos CONFIG.SYS y AUTOEXEC.BAT 
+--------------------------------------------------------------
+Cuando Instalar ejecuta la instalaci¢n de Windows para Trabajo en Grupo, 
+generalmente sit£a los archivos HIMEM.SYS, SMARTDRV.EXE y EMM386.EXE en 
+el directorio de Windows para Trabajo en Grupo. Si el directorio de 
+Windows para Trabajo en Grupo se encuentra en un disco no disponible al 
+encender la computadora (por ejemplo, en un disco externo, 
+intercambiable o no local), o si Instalar detecta algunas de las 
+siguientes situaciones:
+
+* La unidad de inicio ha sido modificada por una utilidad de compresi¢n 
+  de discos.
+
+* El archivo CONFIG.SYS contiene referencias a controladores de
+  dispositivo de bloque.
+
+* El archivo CONFIG.SYS est  definido para configuraciones m£ltiples.
+
+* No hay suficiente espacio disponible en el disco duro para copiar los 
+  archivos.
+
+* Los archivos ya est n instalados en el sistema, de manera que Instalar 
+  no puede escribir sobre ellos (los archivos son de s¢lo lectura).
+
+Instalar no modificar  autom ticamente los archivos CONFIG.SYS o 
+AUTOEXEC.BAT, sino que guardar  las modificaciones propuestas en los 
+archivos CONFIG.WIN y AUTOEXEC.WIN, o en los archivos CONFIG.00x y 
+AUTOEXEC.00x. En este caso, deber  mover los archivos HIMEM.SYS, 
+SMARTDRV.EXE y EMM386.EXE a una unidad que est‚ disponible en el 
+momento de encender la computadora, o bien utilizar un editor de texto 
+para modificar el archivo CONFIG.SYS o AUTOEXEC.BAT, de tal modo que 
+todas las referencias a HIMEM.SYS, SMARTDRV.EXE y EMM386.EXE aparezcan 
+despu‚s de la l¡nea de comandos device=, utilizada para cargar los 
+controladores correspondientes a las unidades de disquete. Para obtener 
+m s informaci¢n sobre las modificaciones propuestas, consulte los 
+archivos CONFIG.WIN y AUTOEXEC.WIN, o bien CONFIG.00x y AUTOEXEC.00x.
+
+
+Utilizaci¢n de configuraciones de sistema m£ltiple con Windows para 
+Trabajo en Grupo
+___________________________________________________________________
+
+La versi¢n 6.0 o superior de MS-DOS le permite definir configuraciones
+de sistema m£ltiple en un s¢lo archivo CONFIG.SYS. Cuando instale
+Windows para Trabajo en Grupo 3.11, si est  ejecutando MS-DOS en la
+versi¢n 6.0 o superior, Instalar examinar  el archivo CONFIG.SYS en su
+men£ hasta hallar la secci¢n de teclas de m‚todo abreviado y determinar
+si este archivo contiene m£ltiple configuraciones. Si ‚ste fuera el
+caso, Instalar Windows para Trabajo en Grupo 3.11 crear  un archivo
+llamado CONFIG.WIN en el directorio de Windows que contenga las
+entradas que debe contener el archivo CONFIG.SYS.
+
+Instalar no modifica autom ticamente al archivo CONFIG.SYS, para
+preservar la integridad de la configuraci¢n del usuario en caso de que
+encuentre alguna dificultad en la interpretaci¢n del entorno del mismo.
+Una vez que Instalar finalice su trabajo, podr  abrir el archivo
+CONFIG.SYS y el nuevo archivo CONFIG.WIN creado por Instalar,
+fucion ndolos.
+
+NOTA: [Windows para Trabajo en Grupo] se usa en esta secci¢n con el
+fin de referirse al bloque de configuraci¢n del archivo CONFIG.SYS,
+que se utiliza para la configuraci¢n de Windows para Trabajo en Grupo.
+El nombre exacto de ese bloque puede ser distinto del usado aqu¡,
+dependiendo del nombre que se utiliz¢ para la configuraci¢n.
+
+Cuando se utiliza la capacidad de configuraci¢n m£ltiple en MS-DOS 6 
+(o con cualquier otro producto como tercera parte que provea de las 
+mismas capacidades), es importante prestar atenci¢n a la siguiente 
+informaci¢n:
+
+Las l¡neas siguientes deben figurar en cualquiera de los bloques de 
+configuraci¢n, ya sea [Common] o [Windows para Trabajo en Grupo] del 
+archivo CONFIG.SYS para que los componentes de la red de Windows para
+Trabajo en Grupo se carguen como corresponde:
+
+device=C:\WINDOWS\HIMEM.SYS
+device=C:\WINDOWS\IFSHLP.SYS
+
+NOTA: Si tambi‚n tiene un bloque de configuraci¢n en su archivo
+CONFIG.SYS para ejecutar Microsoft LAN Manager o Windows para Trabajo
+en Grupo 3.1 y desea utilizarlo luego de instalar Windows para Trabajo
+en Grupo 3.11, coloque la l¡nea del controlador del dispositivo
+IFSHLP.SYS en la configuraci¢n del bloque de Windows para Trabajo en
+Grupo 3.11, en lugar de establecerla en el bloque de configuraci¢n de
+[common]. Si coloca IFSHLP.SYS en su [Common] bloque de configuraci¢n,
+preveer  que los controladores de red de LAN Manager o Windows para
+Trabajo en Grupo 3.1 se carguen como corresponde.
+
+Otras l¡neas de controladores de dispositivo que pueden existir tanto 
+para el bloque de configuraci¢n de [Common] como para el de [Windows
+para Trabajo en Grupo] incluyen:
+
+device=C:\WINDOWS\EMM386.EXE
+
+device=C:\WINDOWS\SMARTDRV.EXE /DOUBLE_BUFFER
+
+Si previamente us¢ Windows para Trabajo en Grupo 3.1, puede eliminar
+las siguientes l¡neas de controladores de dispositivo del bloque de
+configuraci¢n para [Windows para Trabajo en Grupo] de su archivo 
+CONFIG.SYS si todav¡a permanecen luego de haber instalado Windows para
+Trabajo en Grupo 3.11:
+
+c:\windows\protman.dos /i:c:\windows
+
+c:\windows\<network card driver>.DOS { por ejemplo, EXP16.DOS }
+
+c:\windows\workgrp.sys
+
+Si estas l¡neas de controladores de dispositivo figuran en su archivo
+CONFIG.SYS m s de una vez, Instalar Windows para Trabajo en Grupo s¢lo
+eliminar  la primera vez que aparezcan. Si su bloque para [Windows para
+Trabajo en Grupo] no es el primero en su archivo CONFIG.SYS, puede ser
+que tenga que eliminarlos manualmente de [Windows para Trabajo en Grupo].
+
+Los transportes correspondientes a una red de tercera parte, deber¡an
+ser desplazados a la l¡nea transports= line en la secci¢n [controladores
+de la red] del archivo SYSTEM.INI.
+
+En el futuro, para cargar las tarjetas adaptadoras de red NDIS y los 
+controladores de protocolos de red, no se utilizar n m s los archivos
+CONFIG.SYS y AUTOEXEC.BAT. Windows para Trabajo en Grupo 3.11 especifica
+la configuraci¢n de la red en los archivos SYSTEM.INI y PROTOCOL.INI.
+
+Si est  utilizando diferentes controladores de tarjetas de adaptadores
+de red o protocolos de red y desea conmutar entre esas diferentes
+configuraciones, los archivos SYSTEM.INI y PROTOCOL.INI deben ser
+cambiados para reflejar estas configuraciones. La v¡a m s sencilla para
+activar un cambio r pido de configuraciones, es la de mantener copias
+separadas de los archivos SYSTEM.INI y PROTOCOL.INI que reflejen los
+adaptadores o los protocolos que debe soportar.
+
+
+Instalaci¢n de adaptadores de v¡deo XGA en computadoras PS/2 Modelo 75
+¢ 90 
+----------------------------------------------------------------------
+Si dispone de un sistema PS/2 modelo 75 ¢ 90 con adaptador de v¡deo 
+XGA, el programa Instalar de Windows para Trabajo en Grupo configurar   
+el adaptador de pantalla para una resoluci¢n de 640x480 puntos en 16 
+colores. No modifique esta configuraci¢n durante la instalaci¢n. Si al 
+instalar Windows para Trabajo en Grupo especifica una configuraci¢n 
+diferente para XGA, puede que falle el programa de instalaci¢n.
+
+Una vez que Windows para Trabajo en Grupo haya quedado instalado, podr  
+configurar XGA para utilizar una resoluci¢n diferente o para 256 
+colores, si su monitor lo admite. Para m s informaci¢n, consulte 
+"IBM XGA: configuraci¢n del color y la resoluci¢n" en el archivo 
+LEAME.WRI. 
+
+Si emplea la pantalla de plasma con una computadora PS/2 modelo 75, 
+utilice UNICAMENTE la configuraci¢n 480x640 en 16 colores. Si intenta 
+modificar esta configuraci¢n en las pantallas de plasma del modelo 75, 
+regresar  a MS-DOS cuando intente iniciar Windows para Trabajo en Grupo.
+
+Configuraci¢n de una tarjeta de red IBM Token Ring de 4/16MB en una 
+computadora Microchannel (MCA) 
+-------------------------------------------------------------------
+Si tiene una computadora MCA y est  instalando el soporte de Windows 
+para Trabajo en Grupo para una tarjeta de red IBM Token Ring de 4/16MB, 
+aseg£rese que el par metro Maximum Transmits se configure no mayor a 
+1024. Si intenta utilizar un valor m s alto, la tarjeta de red no 
+funcionar  correctamente en su computadora.
+
+C¢mo corregir el mensaje de error "Espacio de entorno insuficiente" 
+-------------------------------------------------------------------
+Si al iniciar Windows para Trabajo en Grupo aparece un mensaje de 
+"espacio de entorno insuficiente", existen dos m‚todos para resolver el 
+problema:
+
+*  Aumente el tama¤o del entorno a¤adiendo la l¡nea de comando SHELL= al 
+   archivo CONFIG.SYS. Para m s informaci¢n sobre el comando SHELL y 
+   sobre la modificaci¢n del archivo CONFIG.SYS, consulte el manual de 
+   MS-DOS.
+
+*  Traslade los comandos SET del archivo AUTOEXEC.BAT al principio del 
+   archivo para que se ejecuten antes que los comandos que cargan 
+   programas residentes en memoria (TSR) o controladores, como 
+   SMARTDrive.
+ 
+Uso de Extensiones de multimedia versi¢n 1.0 con Windows para Trabajo en 
+Grupo 
+------------------------------------------------------------------------
+Para utilizar las Extensiones de multimedia con Windows para Trabajo en 
+Grupo, configure primeramente Windows con Extensiones de multimedia 
+versi¢n 1.0. Luego, actualice a Windows para Trabajo en Grupo 
+instal ndolo en el mismo directorio. Si instala Windows para Trabajo en 
+Grupo antes de configurar las Extensiones de multimedia, no obtendr  
+buenos resultados de instalaci¢n con todos los archivos.
+
+Consulte el documento en pantalla LEAME.WRI para obtener m s informaci¢n 
+acerca de la ejecuci¢n de Extensiones de multimedia con Windows para 
+Trabajo en Grupo.
+
+Obtenci¢n de controladores de la Biblioteca de controladores de Windows 
+(WDL)
+-----------------------------------------------------------------------
+Si posee un m¢dem, puede cargar los archivos de la Biblioteca de 
+controladores de Windows por medio de servicios de red como CompuServe, 
+GEnie, Microsoft OnLine, o de varios servicios de boletines electr¢nicos 
+para usuarios tales como el bolet¡n electr¢nico de red de la Asociaci¢n
+de grupos de usuarios de computadoras de red. Comun¡quese con la filial 
+de Microsoft m s cercana (encontrar  direcciones y n£neros telef¢nicos 
+en la tarjeta de Filiales internacionales). Para usar MSDL (Microsoft 
+Download Service), necesitar  de las siguientes configuraciones de 
+comunicaci¢n:
+Velocidad de transmisi¢n en baudios
+1200, 2400 o 9600
+Bits de datos
+8
+
+Paridad
+Ninguna
+Bits de paro
+1
+
+Utilizaci¢n de los programas residentes en memoria (TSR) y controladores 
+con Windows para Trabajo en Grupo 
+========================================================================
+
+En la secci¢n "Lista de programas" de este documento se mencionan 
+algunos programas residentes en memoria y controladores causantes de 
+problemas (tales como fallos en el sistema o informaci¢n incorrecta en 
+pantalla) cuando se ejecutan conjuntamente con Windows para Trabajo en 
+Grupo. En algunos casos se indican m‚todos especiales para resolver los 
+problemas.
+
+Durante la instalaci¢n de Windows para Trabajo en Grupo, Instalar 
+examina los archivos AUTOEXEC.BAT y CONFIG.SYS, y busca los programas 
+residentes en memoria y controladores en ejecuci¢n. Si se detecta alg£n 
+problema, aparecer  un mensaje en pantalla preguntando si se desea 
+continuar con Instalar o si se prefiere salir del programa.
+
+En este caso conviene que haga lo siguiente:
+
+1.    Busque el programa TSR en la "Lista de programas" y utilice la 
+      informaci¢n del programa residente en memoria para determinar si 
+      la ubicaci¢n detectada no afecta a la instalaci¢n de Windows para 
+      Trabajo en Grupo. 
+
+2.    Si la ubicaci¢n no afecta a la instalaci¢n, puede continuar 
+      instalando Windows para Trabajo en Grupo siguiendo las 
+      instrucciones de la pantalla.
+
+      Si la ubicaci¢n afecta a Instalar e impide la instalaci¢n de 
+      Windows para Trabajo en Grupo en la computadora, siga las 
+      instrucciones que aparecen en pantalla para salir de Instalar y 
+      efect£e los siguientes procedimientos.
+
+3.    Salga del TSR y elimine todas las referencias al mismo de los 
+      archivos AUTOEXEC.BAT y CONFIG.SYS.
+
+4.    Vuelva a iniciar el sistema. 
+
+5.    Vuelva a ejecutar el programa Instalar de Windows para Trabajo en 
+      Grupo.
+
+Una vez instalado correctamente Windows para Trabajo en Grupo, puede 
+restaurar los programas residentes en memoria.
+
+Instalar no detecta todos los controladores o programas TSR que se
+mencionan en la "Lista de programas". Los programas TSR y los 
+controladores que se detectan son los que aparecen en las secciones 
+[incomptsr1] y [incomptsr2] del archivo SETUP.INF.
+
+				   
+Lista de programas
+==================
+Esta secci¢n describe algunos problemas, descubiertos durante las 
+pruebas, que puede experimentar cuando utiliza un programa TSR con 
+Windows para Trabajo en Grupo. No incluye todos los posibles casos y 
+problemas que pudieran ocurrir.
+
+
+386MAX(R)
+---------
+La documentaci¢n de 386MAX recomienda no utilizar nunca un valor 
+inferior a 64 para el par metro EXT. Si se utiliza el valor 0 para este 
+par metro, fallar  el programa Instalar Windows para Trabajo en Grupo.
+
+Para m s informaci¢n sobre la ejecuci¢n de 386MAX con Windows para 
+Trabajo en Grupo, consulte el archivo LEAME.WRI.
+
+Utilidad cach‚ de disco 386MAX (QCACHE.EXE)
+-------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTdrive. No existe raz¢n alguna para utilizar dos utilidades cach‚ 
+de disco con Windows para Trabajo en Grupo. Se recomienda emplear 
+SMARTDrive (incluido en Windows para Trabajo en Grupo).
+
+All Charge 386 Versi¢n 3.1
+-------------------------- 
+ALLEMM4.SYS es un administrador de memoria que causa problemas con 
+Instalar o al ejecutar Windows para Trabajo en Grupo. Si tiene alg£n 
+problema al ejecutar este programa con Windows para Trabajo en Grupo, se 
+recomienda utilizar como administradores de memoria los programas 
+EMM386.EXE e HIMEM.SYS (incluidos en Windows para Trabajo en Grupo).
+
+Anarkey Versi¢n 4.00
+--------------------
+En algunas configuraciones de memoria, la ejecuci¢n de la versi¢n 4.0
+de Anarkey con Windows para Trabajo en Grupo puede provocar fallos del
+sistema inesperados. En casos muy raros, este programa tambi‚n puede
+alterar los datos en el disco duro. Adem s, quiz  no sea posible iniciar
+Windows para Trabajo en Grupo mientras se est  ejecutando este programa.
+
+No ejecute Windows para Trabajo en Grupo mientras est‚ ejecutando la
+versi¢n 4.0 de Anarkey. La versi¢n 4.01 puede corregir estos problemas.
+Solicite a Moderne Software una actualizaci¢n gratuita a Anarkey 4.01.
+
+
+Anarkey Versi¢n 4.01
+--------------------
+No cargue Anarkey en memoria alta (HIGH) antes de iniciar Windows para
+Trabajo en Grupo, ya que si lo hace pueden producirse fallos al intentar
+iniciar una aplicaci¢n.
+
+APPEND (MS-DOS)
+---------------
+No se recomienda emplear la utilidad APPEND con Windows para Trabajo en
+Grupo, puesto que impide que las aplicaciones Windows puedan crear 
+nombres de rutas de acceso tipo WFP para los archivos a los cuales se 
+desea acceder. (WFP corresponde al nombre completo de un archivo, 
+incluyendo la letra de la unidad y la especificaci¢n completa de la 
+ruta de acceso, empezando desde el directorio ra¡z de dicha unidad). 
+
+ASP Integrity Toolkit Versi¢n 3.7
+---------------------------------
+Cuando se ejecuta este programa de Protecci¢n Antivirus al mismo tiempo 
+que Instalar Windows para Trabajo en Grupo, pueden presentarse diversos 
+problemas, desde el bloqueo o reinicializaci¢n del sistema hasta la 
+imposibilidad de usar el teclado. Es necesario desactivar la protecci¢n 
+de este programa antes de instalar Windows para Trabajo en Grupo. Para
+obtener informaci¢n acerca del m‚todo para hacerlo, consulte la
+documentaci¢n de ASP Integrity.
+
+Autocon Versi¢n 2.0e 
+--------------------
+Autocon permite seleccionar hasta 50 configuraciones diferentes en el
+momento de iniciar el sistema. Para ello, al reiniciarse el sistema 
+desde AUTOCON, se modifican los archivos CONFIG.SYS y AUTOEXEC.BAT seg£n 
+la informaci¢n almacenada en su base de datos (AUTOCON.DAT). 
+
+El programa Instalar de Windows para Trabajo en Grupo s¢lo modifica la 
+primera secci¢n de CONFIG.SYS y AUTOEXEC.BAT. Por lo tanto, deber   
+ejecutar Autocon despu‚s de Instalar y editar manualmente aquellas 
+configuraciones de la base de datos que se desee utilizar, para 
+posteriormente reiniciar el sistema desde Autocon. Para obtener m s 
+informaci¢n, consulte la documentaci¢n de Autocon.
+
+Bootcon Versi¢n 1.60
+--------------------
+Bootcon permite mantener diversas configuraciones
+del sistema en los archivos CONFIG.SYS y AUTOEXEC.BAT. De tal modo,
+podr  elegir en un men£ la configuraci¢n que desee utilizar en el 
+momento del inicio. 
+
+Instalar s¢lo modifica la primera secci¢n de los archivos CONFIG.SYS y 
+AUTOEXEC.BAT, pudiendo modificar otras secciones que contienen a los 
+controladores de red (por ejemplo, pueden eliminarse los controladores 
+de LAN Manager y de NetWare). Despu‚s de instalar Windows para Trabajo 
+en Grupo, deber  editar las secciones que contengan las configuraciones 
+que desee utilizar. Para obtener m s informaci¢n, consulte la 
+documentaci¢n de BOOTCON.
+
+BOOT.SYS
+--------
+BOOT.SYS permite mantener diversas configuraciones del sistema dentro de 
+los archivos CONFIG.SYS y AUTOEXEC.BAT, lo cual hace posible que, en el 
+momento de iniciar el sistema, pueda seleccionar en un men£ la 
+configuraci¢n deseada.  
+
+Instalar s¢lo modifica la primera secci¢n de los archivos CONFIG.SYS y 
+AUTOEXEC.BAT, pudiendo modificar otras secciones que contienen a los 
+controladores de red (por ejemplo, pueden eliminarse los controladores 
+de LAN Manager y de NetWare). Despu‚s de instalar Windows para Trabajo 
+en Grupo, deber  editar las secciones que contengan las configuraciones 
+que desee utilizar. Para obtener m s informaci¢n, consulte la 
+documentaci¢n de BOOT.SYS.
+
+
+Utilidad cach‚ de disco CACHE.EXE
+------------------------------------
+No es conveniente utilizar dos utilidades cach‚ de disco con Windows 
+para Trabajo en Grupo. Se recomienda emplear SMARTDrive, incluido en 
+Windows para Trabajo en Grupo, y eliminar cualquier otra utilidad de 
+este tipo de los archivos CONFIG.SYS y AUTOEXEC.BAT (si se detecta
+CACHE.EXE, Instalar eliminar  autom ticamente este programa).
+
+Utilidad cach‚ de disco CACHE.SYS  
+------------------------------------
+Este programa de cach‚ de disco, no funciona correctamente si se utiliza 
+al mismo tiempo que SMARTdrive. Se recomienda utilizar el programa 
+SMARTDrive, incluido en Windows para Trabajo en Grupo, y eliminar todas 
+las referencias a utilidades de este tipo de los archivos CONFIG.SYS y 
+AUTOEXEC.BAT (si se detecta CACHE.SYS, Instalar eliminar  
+autom ticamente este programa).
+
+CED Versi¢n 1.0e
+----------------
+El empleo de CED con Windows para Trabajo en Grupo puede causar 
+problemas, e incluso el fallo del sistema, por lo tanto no se recomienda 
+su uso con Windows para Trabajo en Grupo.
+
+Antivirus de Central Point Versi¢n 1.1 (VSAFE.COM/VSAFE.SYS) 
+------------------------------------------------------------
+No debe cargar VSAFE.COM/VSAFE.SYS al instalar Windows para Trabajo en 
+Grupo debido a que Instalar podr¡a no funcionar correctamente. Una vez 
+terminada la instalaci¢n de Windows para Trabajo en Grupo, podr  cargar 
+VSAFE sin inconvenientes.
+
+Si est  actualizando a Windows para Trabajo en Grupo 3.11, deber 
+tambi‚n eliminar los archivos CHKLIST.MS que VSAFE ha creado antes de 
+ejecutar la intalaci¢n.
+
+Debido a que Windows para Trabajo en Grupo utiliza el disco para el 
+intercambio de memoria, al ejecutar Windows para Trabajo en Grupo debe 
+desactivar la opci¢n de protecci¢n contra escritura de VSAFE.
+
+Para obtener m s informaci¢n, consulte la documentaci¢n del programa 
+Antivirus de Central Point.
+
+
+CMDEDIT.COM Versi¢n 2.0
+-----------------------
+Si este editor de l¡neas de comando est  cargado antes de iniciar 
+Windows para Trabajo en Grupo, puede producirse un fallo de protecci¢n
+general al ejecutar sesiones m£ltiples de MS-DOS.
+
+
+Cubit Versi¢n 3.01
+------------------
+Si se ejecuta Windows para Trabajo en Grupo con CUBIT, no comprima el 
+directorio SYSTEM de Windows o cualquier otro archivo que se cargue 
+desde el archivo CONFIG.SYS. La compresi¢n puede ocasionar problemas.
+
+Antes de actualizar Windows para Trabajo en Grupo, aseg£rese de que la 
+versi¢n anterior no est‚ comprimida en el disco duro. Despu‚s de 
+instalar Windows para Trabajo en Grupo puede volver a comprimir dichos 
+archivos.
+
+Data Physician Plus Versi¢n 2.0 (VirALERT) 
+------------------------------------------
+Se recomienda no ejecutar el programa Instalar Windows para Trabajo en 
+Grupo si est  cargado el programa VirALERT, a fin de evitar la aparici¢n 
+de un mensaje de advertencia cada pocos segundos mientras se ejecuta 
+Instalar. 
+
+Una vez concluida la instalaci¢n de Windows para Trabajo en Grupo puede 
+ejecutar VirALERT. Para que aparezca el men£ de VirALERT, presione la 
+tecla ALT+V. Para activar o desactivar el programa utilice los comandos 
+de este men£.
+
+Editor de l¡nea de comando DOSCUE.COM 
+--------------------------------------
+DOSCUE es un editor de l¡neas de comando que puede producir resultados 
+impredecibles si se utiliza con Windows para Trabajo en Grupo. No 
+conviene emplear este programa con Windows para Trabajo en Grupo.
+
+Doubledisk Versi¢n 2.5 
+----------------------
+Windows para Trabajo en Grupo puede intentar utilizar unidades de disco 
+"fantasma" si se lo utiliza con Doubledisk. Las unidades "fantasma" 
+aparecen cuando se utiliza Doubledisk con el fin de crear una unidad 
+comprimida. As¡, por ejemplo, si en la computadora se dispone de las
+unidades A, B y C y se utiliza Doubledisk para crear la unidad F, tanto 
+Windows para Trabajo en Grupo como MS-DOS reconocer n como v lidas las 
+unidades D y E, aunque en realidad no existan. Para que Windows no
+reconozca las unidades "fantasma", utilice la utilidad DRVOFF. Si 
+necesita una copia de esta utilidad, p¢ngase en contacto con Vertisoft 
+(autores de Doubledisk).
+
+FASTOPEN (MS-DOS)
+-----------------
+FASTOPEN es una utilidad residente en la memoria RAM. Si se utiliza 
+FASTOPEN en combinaci¢n con utilidades de desfragmentaci¢n de discos, 
+pueden aparecer problemas relacionados con la FAT (tabla de asignaci¢n 
+de archivos). Cuando queda poca memoria disponible, puede ser necesario 
+eliminar FASTOPEN para que Windows para Trabajo en Grupo pueda funcionar 
+correctamente.
+
+Utilidad cach‚ de disco Flash (FLASH.EXE) 
+------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTdrive. Emplear dos utilidades cach‚ de memoria al mismo tiempo no 
+aporta ninguna ventaja. Se recomienda emplear SMARTDrive (que se instala 
+autom ticamente con Windows para Trabajo en Grupo) en lugar de la 
+utilidad de cach‚ de disco Flash.
+
+Graphics (MS-DOS)
+-----------------
+Si carga el programa GRAPHICS de MS-DOS desde el s¡mbolo del sistema 
+pueden producirse errores inesperados al imprimir, ya que la sesi¢n 
+activa de MS-DOS env¡a directamente sus datos a la impresora. Por 
+consiguiente, al pasar de una sesi¢n de MS-DOS a otra, es posible que 
+los datos se mezclen.
+
+HPEMM386.SYS y HPEMM486.SYS
+---------------------------
+Estos administradores de memoria expandida no son compatibles con 
+Windows para Trabajo en Grupo. En su lugar se recomienda utilizar 
+EMM386.EXE. 
+
+HPMM.SYS - Administrador de memoria HP 
+--------------------------------------
+Si el administrador de memoria HPMM.SYS est  cargado, no es posible
+instalar Windows para Trabajo en Grupo, debe eliminarse toda referencia
+a HPMM.SYS de los archivos CONFIG.SYS y AUTOEXEC.BAT antes de instalar
+Windows para Trabajo en Grupo.
+
+Utilidad cach‚ de disco Hyperdisk 
+----------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTDrive, ya que ello no aporta ninguna ventaja. Se recomienda 
+utilizar SMARTDrive, que se instala autom ticamente con Windows para 
+Trabajo en Grupo. 
+
+IBM VDISK.SYS (Utilidad de disco de RAM) 
+----------------------------------------
+VDISK.SYS es incompatible con Windows para Trabajo en Grupo debido a 
+que este programa ocupa una parte de la memoria extendida necesaria para 
+ejecutar Windows para Trabajo en Grupo. Si se emplea esta utilidad, no 
+se podr  cargar ning£n otro administrador de memoria compatible con el
+est ndar XMS.
+
+Administrador de memoria IEMM.SYS
+---------------------------------
+El administrador de memoria IEMM.SYS no es compatible con Windows para 
+Trabajo en Grupo. Se recomienda eliminar IEMM.SYS de los archivos 
+CONFIG.SYS y AUTOEXEC.BAT, utilizando en su lugar EMM386.EXE, incluido 
+en Windows para Trabajo en Grupo.
+
+Utilidad cach‚ de disco ICACHE.SYS 
+-----------------------------------
+No utilice dos utilidades cach‚ de disco con Windows para Trabajo en 
+Grupo. Se recomienda utilizar SMARTDrive, incluida en Windows para 
+Trabajo en Grupo y eliminar todas las dem s utilidades cach‚ de disco de 
+los archivos CONFIG.SYS y AUTOEXEC.BAT. (Si Instalar detecta ICACHE.SYS, 
+lo eliminar   autom ticamente del archivo CONFIG.SYS).
+
+Utilidad cach‚ de disco IBMCACHE.SYS
+------------------------------------
+No use dos utilidades cach‚ de disco con Windows para Trabajo en Grupo. 
+Se recomienda utilizar SMARTDrive con Windows para Trabajo en Grupo, 
+incluida en el programa, y eliminar las dem s utilidades cach‚ de disco 
+de los archivos CONFIG.SYS y AUTOEXEC.BAT. (Si Instalar detecta 
+ICACHE.SYS, lo eliminar  autom ticamente del archivo CONFIG.SYS.)
+ 
+Emulador de memoria expandida de Intel(R) (ILIM386.SYS) 
+-------------------------------------------------------
+Este emulador de memoria expandida, que viene incluido con el producto 
+Intel Inboard/386, no es compatible con Windows para Trabajo en Grupo. 
+Se recomienda eliminar este emulador de los archivos CONFIG.SYS y 
+AUTOEXEC.BAT antes de instalar Windows para Trabajo en Grupo.
+
+JOIN (MS-DOS)
+-------------
+No a¤ada o elimine las unidades "enlazadas" mientras se ejecuta Windows 
+para Trabajo en Grupo. Si se utiliza el comando JOIN antes de iniciar 
+Windows para Trabajo en Grupo y no se modifica el estado de las unidades 
+enlazadas desde MS-DOS (dentro de Windows para Trabajo en Grupo), el 
+sistema funcionar  correctamente. Se recomienda no utilizar unidades 
+enlazadas si se piensa ejecutar Windows para Trabajo en Grupo.
+
+KEYB.COM (MS-DOS)
+-----------------
+Si utiliza opciones de l¡nea de comando para cargar KEYB.COM, se 
+recomienda hacerlo antes de iniciar Windows para Trabajo en Grupo. Una 
+vez cargado, podr  modificarse en cualquier momento la configuraci¢n del 
+teclado desde MS-DOS durante una sesi¢n con Windows para Trabajo en 
+Grupo. Si no se carga KEYB antes de iniciar Windows para Trabajo en 
+Grupo, es posible que se produzcan problemas al ejecutar desde MS-DOS un 
+comando KEYB que incluya una opci¢n. Sin embargo, el comando KEYB puede 
+utilizarse sin opciones en cualquier momento, para presentar la 
+informaci¢n relativa a las tablas de c¢digos.
+
+LANSight(TM) Versi¢n 2.0
+------------------------
+LANSight es una utilidad que permite controlar y supervisar otras 
+estaciones de trabajo conectadas a una red Novell. En algunos casos, la 
+versi¢n 2.0 de LANSight podr  provocar un fallo en la estaci¢n de 
+trabajo en la que se est‚ ejecutando Windows para Trabajo en Grupo.
+
+Panel de control Lasertools Versi¢n 2.2
+---------------------------------------
+Cuando se utiliza esta versi¢n del programa Panel de Control Lasertools 
+(PCPANEL.EXE) durante la ejecuci¢n de Windows para Trabajo en Grupo, 
+puede producirse un fallo del sistema. Sin embargo, funcionar  
+correctamente si se carga antes de iniciar Windows para Trabajo en Grupo.
+
+Le Menu Versi¢n 1.0
+-------------------
+Al utilizar simult neamente Le Menu 1.0 y Windows para Trabajo en Grupo, 
+los datos de entorno - tales como PATH, PROMPT y WINDIR - podr¡an 
+perderse al abrir una sesi¢n MS-DOS desde Windows para Trabajo en Grupo. 
+Conviene configurar Windows para Trabajo en Grupo como comando de men£ 
+de archivos de procesamiento por lotes, a fin de cargar COMMAND.COM 
+antes de iniciar Windows para Trabajo en Grupo desde una opci¢n de men£ 
+del programa Le Menu. Para obtener m s informaci¢n, consulte la 
+documentaci¢n de Le Menu.
+
+LOCKIT Versi¢n 3.3 (PC Vault, Secure It) 
+----------------------------------------
+El programa Lockit 3.3 quita espacios de la l¡nea de comando load= en el 
+archivo WIN.INI. En las versiones posteriores parece haberse resuelto 
+este problema.
+
+Logitech(TM) Mouse Software Versi¢n 5.0/6.0 (CLICK, LOGIMENU) 
+-------------------------------------------------------------
+Si desea utilizar CLICK y LOGIMENU desde una sesi¢n de MS-DOS dentro de
+Windows para Trabajo en Grupo, deber  cargar los programas residentes 
+desde dentro de dicha sesi¢n MS-DOS, incluso aunque estas utilidades se 
+hayan cargado antes de iniciar Windows para Trabajo en Grupo. Despu‚s de 
+salir de Windows para Trabajo en Grupo, deber  volver a cargar estas 
+utilidades residentes para que funcionen desde el s¡mbolo de MS-DOS 
+(fuera de Windows para Trabajo en Grupo), aun cuando las haya cargado 
+desde un s¡mbolo de MS-DOS dentro de Windows para Trabajo en Grupo.
+
+Utilidad cach‚ de disco Mace (MCACHE.SYS) 
+------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTDrive. Emplear dos utilidades cach‚ de disco al mismo tiempo no 
+aporta ninguna ventaja. Se recomienda utilizar SMARTDrive, que se 
+instala autom ticamente con Windows para Trabajo en Grupo, y eliminar 
+todas las referencias a las dem s utilidades cach‚ de disco de los 
+archivos CONFIG.SYS y AUTOEXEC.BAT. (Si Instalar detecta Mace, lo 
+eliminar  autom ticamente del archivo CONFIG.SYS.)
+
+Administrador de memoria Maximizer (MAXIMIZE.COM)
+-------------------------------------------------
+Si est  utilizando el administrador de memoria Maximizer, es posible que 
+no pueda configurar o iniciar Windows para Trabajo en Grupo. Aseg£rese 
+de utilizar un solo administrador de memoria con Windows para Trabajo en 
+Grupo. Se recomienda usar los administradores HIMEM.SYS y EMM386.EXE, 
+incluidos con Windows para Trabajo en Grupo.
+
+MIRROR (MS-DOS)
+---------------
+Si se carga MIRROR de MS-DOS desde Windows para Trabajo en Grupo, 
+utilizando el comando Ejecutar del men£ Archivo o una l¡nea de comandos 
+desde el cuadro MS-DOS, se crear  un archivo MIRROR.FIL inadecuado. 
+Antes de ejecutar Windows s¢lo debe ejecutar MIRROR.
+
+Si ejecuta MIRROR con la opci¢n /t y a continuaci¢n inicia Windows, no
+podr  eliminarlo de la memoria mediante el comando MIRROR /u hasta que no
+salga de Windows. Esto provocar  la aparici¢n de un mensaje de error.
+
+NDOSEDIT.COM
+-------------
+Puede tener problemas si carga este editor de l¡neas de comando y adem s
+resultados imprevistos al ejecutar Windows para Trabajo en Grupo.
+
+Administrador de memoria NetRoom 2.1 (RM386.SYS) 
+------------------------------------------------
+Cuando se utilizan versiones anteriores del programa NetRoom 2.1, pueden 
+producirse problemas al intentar configurar Windows para Trabajo en 
+Grupo. Para conseguir una versi¢n actualizada de este programa, p¢ngase 
+en contacto con Helix Software.
+
+NetWare(R) NetBIOS
+------------------
+En numerosas configuraciones, el programa residente NetWare NetBIOS es 
+incompatible con Windows para Trabajo en Grupo. En la mayor¡a de los 
+casos, Instalar detectar  NetWare NetBIOS y eliminar  los comandos de 
+inicio del sistema. Sin embargo, si tiene configurado NetWare NetBIOS 
+para que no se inicie desde el archivo AUTOEXEC.BAT (por ejemplo, desde 
+un archivo de procesamiento por lotes), Instalar no podr  detectarlo. En 
+ese caso, ser  necesario eliminarlo manualmente. Windows para Trabajo en 
+Grupo 3.11 incluye un protocolo compatible IPX/SPX, que puede ser 
+utilizado en reemplazo de NetBIOS. Para obtener m s informaci¢n acerca 
+de la configuraci¢n de Windows para Trabajo en Grupo para que funcione 
+con el programa residente NetWare NetBIOS, consulte el documento en 
+pantalla REDES.WRI.
+
+Newspace Versi¢n 1.07
+---------------------
+Esta utilidad de compresi¢n de disco no es compatible con Windows para 
+Trabajo en Grupo, por lo que su utilizaci¢n puede provocar numerosos 
+problemas. 
+
+Norton Anti-Virus(R) Versi¢n 1.0
+--------------------------------
+Si se carga este programa antes de iniciar Windows para Trabajo en 
+Grupo, puede producirse un fallo al ejecutar Instalar. Se recomienda 
+solicitar a Symantec la versi¢n m s actualizada de este programa.
+
+Norton Desktop para Windows (EP.EXE) 
+------------------------------------
+Si el programa recuperador de datos Erase Protect (EP.EXE) se ha cargado 
+desde el archivo AUTOEXEC.BAT, deber  desconectarlo cuando instale 
+Windows para Trabajo en Grupo, especialmente si est  actualizando una 
+versi¢n anterior de Windows. Erase Protect trata de guardar las copias 
+de todos los archivos eliminados, lo que puede causar falta de espacio 
+en el disco al ejecutar Instalar. 
+
+Se recomienda ejecutar Erase Protect con un archivo de intercambio 
+permanente, no temporal. Si est  utilizando un archivo de intercambio 
+temporal, ser  necesario quitar la protecci¢n contra eliminaci¢n a los 
+archivos con la extensi¢n .TMP o .SWP.
+
+Norton Utilities(R) Versi¢n 5.0 (DISKREET, NCACHE) 
+--------------------------------------------------
+El programa Norton Utilities 5.0 no es compatible con Windows para 
+Trabajo en Grupo, y su ejecuci¢n puede provocar el fallo del sistema. Se 
+recomienda utilizar la versi¢n m s reciente para resolver la mayor¡a de 
+los problemas.
+
+Norton Utilities Versi¢n 6.01 (NCACHE)
+--------------------------------------
+Algunas versiones de NCACHE impiden una correcta instalaci¢n o ejecuci¢n 
+de Windows para Trabajo en Grupo. Esta situaci¢n tiene m s 
+probabilidades de producirse si se configura NCACHE como cach‚ de 
+memoria del tipo EMS. Es posible que se resuelvan los problemas al 
+configurar NCACHE como cach‚ de memoria deL tipo XMS. 
+
+Tambi‚n pueden presentarse problemas adicionales si utiliza NCACHE, 
+aunque en las versiones m s recientes parece haberse solucionado esta 
+situaci¢n. Solicite la versi¢n actualizada de NCACHE a Symantec 
+Corporation. Para obtener resultados ¢ptimos, se recomienda utilizar 
+SMARTDrive, que se suministra con Windows para Trabajo en Grupo. 
+
+Norton Utilities Versi¢n 6.01 (DISKMON)
+---------------------------------------
+Se recomienda no utilizar DISKMON versi¢n 6.01 con Windows para Trabajo 
+en Grupo.
+
+PCED Versi¢n 2.00
+-----------------
+No es conveniente cargar el editor de l¡nea de comandos PCED en memoria 
+alta (HIGH), ya que si se intenta hacerlo y ejecutar al mismo tiempo 
+Windows para Trabajo en Grupo pueden producirse resultados imprevistos.
+
+PCKEY.EXE (Optimizador de teclado y pila de l¡neas de comando de 
+Multisoft)
+-----------------------------------------------------------------
+Es posible que PCKEY.EXE no funcione correctamente con Windows para
+Trabajo en Grupo si est  ejecutando al mismo tiempo m s de una 
+aplicaci¢n de MS-DOS. Se recomienda descargar PCKEY.EXE antes de iniciar 
+Windows para Trabajo en Grupo.
+
+Acelerador de disco PC-Kwik 
+---------------------------
+Si utiliza PC-Kwik con Windows para Trabajo en Grupo, aseg£rese de usar 
+la versi¢n 3.55 u otra posterior y de estar utilizando PC-Kwik en 
+memoria extendida y no expandida. Si necesita actualizar la versi¢n de 
+PC-Kwik, p¢ngase en contacto con MultiSoft.
+
+Utilidades cach‚ de disco PC-Kwik (PC-KWIK.EXE) 
+------------------------------------------------
+Esta utilidad de cach‚ de memoria de disco no debe emplearse al mismo 
+tiempo que SMARTDrive. El uso de dos utilidades cach‚ de disco al mismo 
+tiempo no aporta ninguna ventaja. Se recomienda utilizar SMARTDrive, que 
+se instala autom ticamente con Windows para Trabajo en Grupo.
+
+PC-Kwik Versi¢n 1.59 (PCK.EXE, PSKSCRN.EXE, PCHEY.COM) 
+------------------------------------------------------
+Si se utiliza el programa Instalar estando cargada la versi¢n 1.59 de
+PC-Kwik, puede producirse un fallo del sistema. En la versi¢n 2.0 de 
+PC-Kwik parece haberse resuelto este problema.
+
+Utilidad PCSXMAEM.SYS 
+---------------------
+Esta utilidad es incompatible con Windows para Trabajo en Grupo. Deben 
+eliminarse todas las referencias a ella de los archivos CONFIG.SYS y 
+AUTOEXEC.BAT antes de intentar instalar o ejecutar Windows para Trabajo 
+en Grupo. La utilidad PCSXMAEM.SYS es casi id‚ntica a XMAEM.SYS pero  
+con un nombre nuevo y con ligeras modificaciones. Se suministra con las 
+versiones actuales del emulador PC/3270 de IBM. 
+
+PCSX2EMS.SYS
+------------
+Windows para Trabajo en Grupo funcionar  correctamente con este 
+producto si se carga en una computadora que disponga de una tarjeta XMA. 
+De lo contrario, este producto no es compatible con Windows para Trabajo 
+en Grupo. Se suministra con el emulador PC/3270 de IBM.
+
+PC Tools Deluxe Versi¢n 7.1 (DATAMON)
+-------------------------------------
+Cuando se utiliza el programa residente DATAMON de PC Tools utilizando 
+la opci¢n \SENTRY+, puede haber problemas durante la instalaci¢n de 
+Windows para Trabajo en Grupo si el espacio disponible en el disco es 
+limitado. Se recomienda no cargar DATAMON con el par metro \SENTRY+. 
+
+Si se carga DATAMON despu‚s de la utilidad cach‚ de disco SMARTDrive, 
+puede fallar el sistema. Para obtener m s informaci¢n sobre el modo de 
+descargar la utilidad DATAMON, consulte la documentaci¢n de PC Tools. 
+
+PC Tools Deluxe(TM) Versi¢n 6.0 (DESKTOP)
+-----------------------------------------
+Si se intenta iniciar la ejecuci¢n de PC Tools desde una sesi¢n de MS-DOS 
+dentro de Windows para Trabajo en Grupo, el sistema puede fallar o 
+reiniciarse autom ticamente. Si intenta utilizar cualquier comando de 
+MS-DOS desde una sesi¢n de MS-DOS dentro de Windows para Trabajo en Grupo
+tambi‚n puede ocurrir lo mismo. 
+
+La versi¢n 7.0 de PC Tools puede que resuelva este problema. Sin embargo, no 
+debe ejecutarse el programa Desktop desde una sesi¢n MS-DOS si tambi‚n se ha 
+cargado antes que Windows para Trabajo en Grupo, ya que podr  fallar el 
+sistema al salir de Windows para Trabajo en Grupo. Conviene ejecutar Desktop 
+desde su archivo PIF, que viene incluido con Windows para Trabajo en Grupo.
+
+PC Tools Deluxe Versi¢n 7.1 (VDEFEND) 
+-------------------------------------
+Es posible que no funcione correctamente el proceso de instalaci¢n de Windows 
+para Trabajo en Grupo si este programa residente est  cargado. VDEFEND puede 
+volverse a cargar una vez instalado Windows para Trabajo en Grupo.
+
+Utilidad cach‚ de disco de PC Tools (PC-CACHE.COM) 
+-------------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTDrive. La utilizaci¢n de dos programas de cach‚ de disco al mismo tiempo 
+no aporta ninguna ventaja. Se recomienda emplear SMARTDrive, que se instala 
+autom ticamente con Windows para Trabajo en Grupo.
+
+PRINT (MS-DOS)
+--------------
+Si imprime varios documentos extensos a trav‚s de una impresora de red y al 
+mismo tiempo ejecuta el programa Instalar Windows para Trabajo en Grupo a 
+trav‚s de la red, es posible que falle el sistema en el momento en que 
+Instalar intente crear los grupos del Administrador de programas.
+
+PYRO! versi¢n 1.0
+-----------------
+Si se carga este protector de pantalla antes de iniciar Windows para Trabajo 
+en Grupo, no ser  posible restaurar la pantalla de Windows para Trabajo en 
+Grupo una vez que aparezca este protector de pantalla.
+
+Administrador de memoria QMAPS Versi¢n 5.16
+-------------------------------------------
+Si est  utilizando el administrador de memoria QMAPS, puede que no sea 
+posible configurar o iniciar Windows para Trabajo en Grupo. Al parecer, 
+las nuevas versiones corregir n este problema. Para obtener una versi¢n 
+actualizada, p¢ngase en contacto con Quadtel. Mientras tanto puede usar 
+HIMEM.SYS y EMM386.EXE de Windows para Trabajo en Grupo para administrar 
+la memoria.
+
+RAMTYPE.SYS - Tarjetas AST RAMpage!(R)
+--------------------------------------
+El controlador RAMTYPE.SYS no es compatible con Windows para Trabajo en 
+Grupo, por lo que conviene eliminar este controlador antes de instalar 
+Windows para Trabajo en Grupo. Si se carga este controlador desde el 
+archivo CONFIG.SYS, la l¡nea de comando correspondiente a dicho controlador 
+deber  convertirse en un comentario, para anular su efecto, del siguiente 
+modo: 
+
+	rem RAMTYPE.SYS 
+
+Windows para Trabajo en Grupo funciona correctamente sin RAMTYPE.SYS. Sin 
+embargo, otros controladores que usen RAMTYPE.SYS no se cargar n y las 
+aplicaciones no podr n utilizar la memoria expandida en el sistema. 
+
+Una vez instalado Windows para Trabajo en Grupo, podr n utilizarse las 
+versiones 1.2 y posteriores de RAMTYPE.SYS durante la ejecuci¢n de Windows 
+para Trabajo en Grupo. Si utiliza una versi¢n anterior en una computadora 
+de Micro Channel Architecture o en una IBM PS/2, y la tarjeta RAMpage! est   
+configurada para memoria expandida y extendida, deber  actualizar el 
+controlador AST RAMTYPE.SYS despu‚s de instalar Windows para Trabajo en 
+Grupo. Tambi‚n necesitar  eliminar el comando "rem" del archivo CONFIG.SYS, 
+para poder cargar correctamente el controlador RAMTYPE.SYS.
+
+Utilidad cach‚ de disco Secretdisk II (FAST512.SYS) 
+---------------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTDrive. Se recomienda utilizar SMARTDrive, que se instala 
+autom ticamente con Windows para Trabajo en Grupo, y eliminar todas las 
+referencias a otras utilidades cach‚ de disco de los archivos
+CONFIG.SYS y AUTOEXEC.BAT. (Si Instalar detecta esta utilidad, la 
+eliminar  autom ticamente del archivo CONFIG.SYS.)
+
+Sidekick(R) Versiones 1.0 y 2.0, y SIDEKICK PLUS 
+------------------------------------------------
+Si se intenta ejecutar Sidekick como programa residente al mismo tiempo que 
+Windows para Trabajo en Grupo, pueden presentarse diversos problemas. Se 
+recomienda utilizar Sidekick como una aplicaci¢n para MS-DOS, utilizando un 
+archivo PIF, en lugar de cargarlo como programa residente en memoria.
+
+SoftIce Debugger
+----------------
+Si se carga este programa, Instalar fallar  al entrar en la parte que se 
+ejecuta bajo el entorno Windows para Trabajo en Grupo. Es conveniente no 
+tener cargado el programa SoftIce al instalar Windows para Trabajo en Grupo.
+
+SpeedFXR
+--------
+Cuando se ejecuta como utilidad residente, este programa no es compatible 
+con Windows para Trabajo en Grupo. Este programa intentar  "acelerar" el 
+funcionamiento de los disquetes, pero lo que consigue en realidad es 
+disminuir su velocidad. Si se ejecuta como SpeedFXR -X parece ser que se 
+obtienen mejores resultados con Windows para Trabajo en Grupo, ya que de 
+este modo el programa no queda residente en memoria y la velocidad de la 
+unidad de disquete no queda afectada.
+
+SUBST (MS-DOS)
+--------------
+No agregue o elimine las unidades "sustituidas" mientras se ejecuta Windows 
+para Trabajo en Grupo. Este programa deber  funcionar correctamente si 
+utiliza el comando SUBST antes de iniciarlo y no cambia el estado de las 
+unidades sustituidas desde una sesi¢n MS-DOS en Windows para Trabajo en Grupo. 
+
+Utilidad cach‚ de disco Super PC-Kwik (SUPERPCK.EXE) 
+----------------------------------------------------
+Esta utilidad cach‚ de disco no debe utilizarse al mismo tiempo que 
+SMARTDrive. El empleo de dos utilidades cach‚ de disco al mismo tiempo, no 
+aporta ninguna ventaja. En lugar se recomienda utilizar SMARTDrive, que se 
+instala autom ticamente con Windows para Trabajo en Grupo.
+
+Controlador Trantor T100 Host Adapter (TSCSI.SYS) 
+-------------------------------------------------
+(Para unidades de disco duro SCSI) - Si usa el controlador Trantor T100 
+(TSCSI.SYS), deber  utilizar la versi¢n 4.33d o posterior. En las versiones 
+anteriores, las unidades de disco SCSI se identificaban como unidades 
+extra¡bles. Esto puede ocasionar que falle el sistema al utilizar el 
+Administrador de archivos para dar formato a dichas unidades, produciendo 
+otros resultados imprevistos al eliminar archivos. Puede solicitar 
+una versi¢n actualizada de este controlador a Trantor Systems, Ltd. 
+
+UMB PRO Versi¢n 1.07
+--------------------
+Si se ejecuta UMB PRO, pueden presentarse diversos problemas al utilizar 
+Windows para Trabajo en Grupo en modo est ndar. En ciertos casos puede fallar 
+el sistema. Aseg£rese de que s¢lo se est‚ usando un administrador de memoria 
+con Windows para Trabajo en Grupo. Se recomienda usar los administradores de 
+memoria HIMEM.SYS y EMM386.EXE, que son instalados en forma autom tica con 
+Windows para Trabajo en Grupo.
+
+Vaccine
+-------
+Si est  cargado Vaccine, Instalar fallar  al intentar modificar los archivos 
+CONFIG.SYS y AUTOEXEC.BAT. Debe descargar Vaccine antes de instalar 
+Windows para Trabajo en Grupo. Tambi‚n pueden producirse otros problemas,
+como sonidos, si ejecuta Windows para Trabajo en Grupo mientras Vaccine
+est  cargado.
+
+VIREX-PC Versi¢n 1.11
+---------------------
+Si se instala el programa VIREXPC.COM, Instalar y Windows para Trabajo en 
+Grupo 3.1 fallar n cuando el programa KRNL386.EXE efect£e una operaci¢n de 
+escritura. Adem s, la primera vez que se cargue Windows para Trabajo en 
+Grupo estando instalado Virex-PC puede que vuelva a MS-DOS.
+
+Virus Prevention Plus Versi¢n 5.0
+---------------------------------
+Si este programa ya est  cargado es posible que no pueda instalar Windows 
+para Trabajo en Grupo correctamente. Adem s se presentar n problemas cuando 
+se ejecute Windows para Trabajo en Grupo. El programa Keyboard Lock puede 
+causar la falla de Windows para Trabajo en Grupo. 
+
+Virusafe Versi¢n 4.0
+--------------------
+Si este programa est  instalado como utilidad residente en el momento de 
+ejecutar la instalaci¢n de Windows para Trabajo en Grupo, puede que falle 
+Instalar. Se recomienda cargar Virusafe con el par metro /C-, que desactiva la 
+detecci¢n de modificaciones en memoria que proporciona el programa. En la 
+versi¢n 4.5 de este producto parece haberse resuelto este problema. Para
+obtener m s informaci¢n al respecto, consulte la documentaci¢n de Virusafe.
+
+XMAEM.SYS
+---------
+XMAEM.SYS es un dispositivo que hace que la memoria extendida act£e como un 
+dispositivo XMA (est ndar de memoria extendida de IBM). Es incompatible con 
+Windows para Trabajo en Grupo. Se recomienda su eliminaci¢n de los archivos 
+CONFIG.SYS y AUTOEXEC.BAT antes de instalar o ejecutar Windows para Trabajo 
+en Grupo. Esta utilidad est  incluida con IBM DOS 4.0.
+
+XMA2EMS.SYS
+-----------
+Windows para Trabajo en Grupo funcionar  correctamente con este producto si 
+est  cargado en una computadora que disponga de una tarjeta XMA. En caso 
+contrario, es incompatible con Windows para Trabajo en Grupo. Esta utilidad 
+est  incluida con IBM DOS 4.0. 

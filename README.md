@@ -1,102 +1,98 @@
 # retropc-system-wfw
 
-### Windows for Workgroups 3.11 (ES) — CD installer for 486 PC
+### MS-DOS 6.22 + Windows for Workgroups 3.11 (ES) — CD installer for 486 PC
 
-Generates a **bootable 1.44 MB floppy** (`boot.img`) and a **data CD** (`wfw311.iso`) that together install Windows for Workgroups 3.11 (Spanish) on a 486 PC running MS-DOS 6.22.
-
-If the sister project `retropc-network-rtl8029` is present next to this folder, its Disk 1 content is automatically added to `NET\` on the CD.
+Boot floppy + CD-ROM that installs MS-DOS 6.22 and/or Windows for Workgroups 3.11
+(Spanish) on a 486 PC from scratch.
 
 ---
 
 ## How it works
 
 ```
-boot floppy (boot.img)
-  IO.SYS / MSDOS.SYS / COMMAND.COM   <- MS-DOS 6.22
-  OAKCDROM.SYS                        <- ATAPI CD-ROM driver
-  MSCDEX.EXE                          <- CD-ROM extensions (from MS-DOS 6.22 Disk 1)
-  CONFIG.SYS   -> loads OAKCDROM.SYS
-  AUTOEXEC.BAT -> mounts CD as D:, then calls D:\START.BAT
+floppy/          <- copy to a formatted MS-DOS boot floppy
+  AUTOEXEC.BAT   <- prompts to insert CD, mounts it as D:, launches D:\INSTALL.BAT
+  CONFIG.SYS     <- loads OAKCDROM.SYS
+  MSCDEX.EXE     <- CD-ROM extensions
+  OAKCDROM.SYS   <- ATAPI CD-ROM driver (user-supplied)
 
-CD-ROM (wfw311.iso)
-  START.BAT         <- launches D:\WIN311\INSTALAR /s:D:\WIN311
-  WIN311\           <- all 9 WFW 3.11 disk images flattened into one directory
-  NET\  (optional)  <- RTL8029 network installer (retropc-network-rtl8029 disk-01)
+cd/              <- burn to CD-ROM
+  INSTALL.BAT    <- installer menu
+  MSDOS/         <- MS-DOS 6.22 files (all 3 disks, extracted)
+  WIN311/        <- WFW 3.11 files (all 9 disks, extracted)
+  DOS/           <- useful DOS utilities, ready to use
 ```
 
-Boot sequence on 486:
-1. Insert floppy + CD, boot from floppy
-2. `OAKCDROM.SYS` loads the CD drive
-3. `MSCDEX.EXE` mounts CD as `D:`
-4. Installer runs: `D:\WIN311\INSTALAR /s:D:\WIN311`
-5. WFW 3.11 installs from CD without any disk swapping
+### Boot sequence on 486
 
-> Most 486 BIOSes do not support booting from CD (El-Torito). The floppy handles
-> the boot; the CD is a plain data disc. The ISO is also El-Torito bootable for
-> machines that do support it.
+```
+1. Insert boot floppy, power on
+2. Prompt: "Insert the CD-ROM and press any key..."
+3. Insert CD, press any key
+4. CD mounts as D:, PATH set to D:\DOS
+5. Installer menu:
+      1. Install MS-DOS 6.22
+      2. Install Windows for Workgroups 3.11
+      3. Exit
+```
 
 ---
 
-## Project structure
+## Preparing the floppy
+
+On any MS-DOS machine, format a 1.44 MB floppy with system files:
 
 ```
-retropc-system-wfw/
-├── build.sh          Main build script
-├── cd/               Static content placed at the CD root
-│   └── START.BAT     Launches the WFW installer
-├── disk/
-│   ├── msdos/        MS-DOS 6.22 floppy images (3 x 1.44 MB)
-│   └── wfw/          WFW 3.11 floppy images (9 x 1.44 MB, Spanish)
-├── drivers/          OAKCDROM.SYS (user-supplied)
-└── source/           Additional scripts or tools
+FORMAT A: /S
 ```
 
-Build output (generated, not tracked):
+Then copy all files from `floppy/` to the floppy.
+`OAKCDROM.SYS` must be added manually (see requirements below).
+
+---
+
+## Burning the CD
+
+### macOS — build ISO with build.sh
+
+```bash
+chmod +x build.sh
+./build.sh
+hdiutil burn dist/wfw311.iso
 ```
-dist/boot.img    <- 1.44 MB bootable floppy image
-dist/wfw311.iso  <- CD-ROM image (~12 MB)
-```
+
+### Windows — burn cd/ folder directly
+
+Use any CD burning software (ImgBurn, Nero, Windows Explorer) and burn the
+contents of the `cd/` folder to a blank CD-R.
 
 ---
 
 ## Requirements
 
-| Item | Details |
+`OAKCDROM.SYS` is the universal Oak Technology ATAPI CD-ROM driver. It is
+freely available at [archive.org](https://archive.org/details/oakcdrom).
+
+Copy it to the `floppy/` folder before preparing the floppy disk.
+
+---
+
+## DOS utilities included (cd/DOS/)
+
+| File | Description |
 |---|---|
-| `OAKCDROM.SYS` | Universal ATAPI CD-ROM driver — place in `drivers/` |
-| mtools | `brew install mtools` |
-| cdrtools | `brew install cdrtools` (provides `mkisofs`) — installed automatically by build.sh |
-
-### OAKCDROM.SYS
-
-`OAKCDROM.SYS` is the universal Oak Technology ATAPI driver. It is freely
-available at [archive.org](https://archive.org/details/oakcdrom).
-
-Place the file at `drivers/OAKCDROM.SYS` before running the build.
-
----
-
-## Build
-
-```bash
-chmod +x build.sh
-./build.sh
-```
-
----
-
-## Write to physical media (macOS)
-
-### Floppy
-
-```bash
-diskutil list                          # find your floppy drive, e.g. /dev/disk4
-diskutil unmountDisk /dev/disk4
-sudo dd if=dist/boot.img of=/dev/rdisk4 bs=512
-```
-
-### CD-ROM
-
-```bash
-hdiutil burn dist/wfw311.iso
-```
+| `FDISK.EXE` | Disk partitioning |
+| `FORMAT.COM` | Disk formatting |
+| `SYS.COM` | Transfer system files to a drive |
+| `SCANDISK.EXE` | Disk surface scan and repair |
+| `CHKDSK.EXE` | Check disk structure |
+| `EDIT.COM` | Full-screen text editor (requires QBASIC.EXE) |
+| `QBASIC.EXE` | Required by EDIT |
+| `DEBUG.EXE` | Low-level debugger |
+| `EXPAND.EXE` | Expand compressed DOS files |
+| `ATTRIB.EXE` | File attribute manager |
+| `MSD.EXE` | Hardware diagnostic tool |
+| `CHOICE.COM` | Menu/prompt utility |
+| `MORE.COM` | Output pager |
+| `UNFORMAT.COM` | Recover a formatted drive |
+| `UNDELETE.EXE` | Recover deleted files |
